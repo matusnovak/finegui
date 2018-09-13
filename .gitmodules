@@ -1,0 +1,24 @@
+[submodule "libs/glfw"]
+	path = libs/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "libs/nanovg"]
+	path = libs/nanovg
+	url = https://github.com/memononen/nanovg.git
+[submodule "libs/freetype2"]
+	path = libs/freetype2
+	url = https://github.com/aseprite/freetype2
+[submodule "libs/zlib"]
+	path = libs/zlib
+	url = https://github.com/madler/zlib
+[submodule "libs/libpng"]
+	path = libs/libpng
+	url = https://github.com/glennrp/libpng
+[submodule "libs/tinyxml2"]
+	path = libs/tinyxml2
+	url = https://github.com/leethomason/tinyxml2.git
+[submodule "libs/finegraphics"]
+	path = libs/finegraphics
+	url = https://github.com/matusnovak/finegraphics.git
+[submodule "libs/bzip2-1.0.6"]
+	path = libs/bzip2-1.0.6
+	url = https://github.com/enthought/bzip2-1.0.6

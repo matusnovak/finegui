@@ -1,0 +1,76 @@
+<window width="600px" height="600px" padding="0px" orientation="horizontal" wrap="true">
+    <box width="33.333%" height="33.333%" padding="5px" 
+         align="top-left" label="TOP_LEFT" orientation="horizontal" wrap="true">
+
+        <button width="60px" height="25px" margib="5px">Button #1</button>
+        <button width="60px" height="25px" margib="5px">Button #2</button>
+        <button width="100px" height="25px" margib="5px">Button #3</button>
+
+    </box>
+    <box width="33.333%" height="33.333%" padding="5px" 
+         align="top-center" label="TOP_CENTER" orientation="horizontal" wrap="true">
+
+        <button width="60px" height="25px" margib="5px">Button #1</button>
+        <button width="60px" height="25px" margib="5px">Button #2</button>
+        <button width="100px" height="25px" margib="5px">Button #3</button>
+
+    </box>
+    <box width="33.333%" height="33.333%" padding="5px" 
+         align="top-right" label="TOP_RIGHT" orientation="horizontal" wrap="true">
+
+        <button width="60px" height="25px" margib="5px">Button #1</button>
+        <button width="60px" height="25px" margib="5px">Button #2</button>
+        <button width="100px" height="25px" margib="5px">Button #3</button>
+
+    </box>
+
+    <box width="33.333%" height="33.333%" padding="5px" 
+         align="left" label="LEFT" orientation="horizontal" wrap="true">
+
+        <button width="60px" height="25px" margib="5px">Button #1</button>
+        <button width="60px" height="25px" margib="5px">Button #2</button>
+        <button width="100px" height="25px" margib="5px">Button #3</button>
+
+    </box>
+    <box width="33.333%" height="33.333%" padding="5px" 
+         align="center" label="CENTER" orientation="horizontal" wrap="true">
+
+        <button width="60px" height="25px" margib="5px">Button #1</button>
+        <button width="60px" height="25px" margib="5px">Button #2</button>
+        <button width="100px" height="25px" margib="5px">Button #3</button>
+
+    </box>
+    <box width="33.333%" height="33.333%" padding="5px" 
+         align="right" label="RIGHT" orientation="horizontal" wrap="true">
+
+        <button width="60px" height="25px" margib="5px">Button #1</button>
+        <button width="60px" height="25px" margib="5px">Button #2</button>
+        <button width="100px" height="25px" margib="5px">Button #3</button>
+
+    </box>
+
+    <box width="33.333%" height="33.333%" padding="5px" 
+         align="bottom-left" label="BOTTOM_LEFT" orientation="horizontal" wrap="true">
+
+        <button width="60px" height="25px" margib="5px">Button #1</button>
+        <button width="60px" height="25px" margib="5px">Button #2</button>
+        <button width="100px" height="25px" margib="5px">Button #3</button>
+
+    </box>
+    <box width="33.333%" height="33.333%" padding="5px" 
+         align="bottom-center" label="BOTTOM_CENTER" orientation="horizontal" wrap="true">
+
+        <button width="60px" height="25px" margib="5px">Button #1</button>
+        <button width="60px" height="25px" margib="5px">Button #2</button>
+        <button width="100px" height="25px" margib="5px">Button #3</button>
+
+    </box>
+    <box width="33.333%" height="33.333%" padding="5px" 
+         align="bottom-right" label="BOTTOM_RIGHT" orientation="horizontal" wrap="true">
+
+        <button width="60px" height="25px" margib="5px">Button #1</button>
+        <button width="60px" height="25px" margib="5px">Button #2</button>
+        <button width="100px" height="25px" margib="5px">Button #3</button>
+
+    </box>
+</window>

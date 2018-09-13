@@ -1,0 +1,183 @@
+<window width="600px" height="700px" padding="0px">
+    <scrollable-layout width="100%" height="100%" orientation="horizontal" wrap="true" scroll-x="false" scroll-y="true">
+        <box width="32.333%" height="auto" orientation="vertical" label="Buttons" margin="0px 0.5% 5px 0.5%">
+            <button>Normal</button>
+            <button hover="true" ignore-input="true">Hover</button>
+            <button focus="true" ignore-input="true">Focus</button>
+            <button disabled="true">Disabled</button>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Toggle Buttons" margin="0px 0.5% 5px 0.5%">
+            <button-toggle>Normal</button-toggle>
+            <button-toggle hover="true" ignore-input="true">Hover</button-toggle>
+            <button-toggle focus="true" ignore-input="true">Focus</button-toggle>
+            <button-toggle disabled="true">Disabled</button-toggle>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Primary Buttons" margin="0px 0.5% 5px 0.5%">
+            <button-primary>Normal</button-primary>
+            <button-primary hover="true" ignore-input="true">Hover</button-primary>
+            <button-primary focus="true" ignore-input="true">Focus</button-primary>
+            <button-primary disabled="true">Disabled</button-primary>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Labels" margin="0px 0.5% 5px 0.5%">
+            <label>Align left</label>
+            <label align="center">Align center</label>
+            <label align="right">Align right</label>
+            <label>First line&#xA;Second line</label>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Radios" margin="0px 0.5% 5px 0.5%">
+            <radio base="0" ref="my-radio">Normal</radio>
+            <radio base="1" group="my-radio" hover="true" ignore-input="true">Hover</radio>
+            <radio base="2" group="my-radio" focus="true" ignore-input="true">Focus</radio>
+            <radio base="3" group="my-radio" disabled="true">Disabled</radio>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Checkboxes" margin="0px 0.5% 5px 0.5%">
+            <checkbox>Normal</checkbox>
+            <checkbox hover="true" ignore-input="true">Hover</checkbox>
+            <checkbox focus="true" ignore-input="true">Focus</checkbox>
+            <checkbox disabled="true">Disabled</checkbox>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Horizontal Sliders" margin="0px 0.5% 5px 0.5%">
+            <label>Normal:</label>
+            <slider vertical="false"/>
+            <label>Normal inversed:</label>
+            <slider vertical="false" inversed="true"/>
+            <label>Hover:</label>
+            <slider vertical="false" hover="true" ignore-input="true"/>
+            <label>Focus:</label>
+            <slider vertical="false" focus="true" ignore-input="true"/>
+            <label>Disabled:</label>
+            <slider vertical="false" disabled="true"/>
+        </box>
+        <box width="32.333%" height="auto" orientation="horizontal" label="Vertical Sliders" margin="0px 0.5% 5px 0.5%">
+            <slider width="auto" height="235px" vertical="true" margin-right="10px"/>
+            <slider width="auto" height="235px" vertical="true" margin-right="10px" inversed="true"/>
+            <slider width="auto" height="235px" vertical="true" margin-right="10px" hover="true" ignore-input="true"/>
+            <slider width="auto" height="235px" vertical="true" margin-right="10px" focus="true" ignore-input="true"/>
+            <slider width="auto" height="235px" vertical="true" margin-right="10px" disabled="true"/>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Scrollbars" margin="0px 0.5% 5px 0.5%">
+            <label>Normal:</label>
+            <scrollbar vertical="false"/>
+            <label>Hover:</label>
+            <scrollbar vertical="false" hover="true" ignore-input="true"/>
+            <label>Focus:</label>
+            <scrollbar vertical="false" focus="true" ignore-input="true"/>
+            <label>Disabled:</label>
+            <scrollbar vertical="false" disabled="true"/>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Image Viewer" margin="0px 0.5% 5px 0.5%">
+            <image-viewer image="owl"/>
+            <label>Subsection:</label>
+            <image-viewer width="80px" image="owl" sub-x="140" sub-y="40" sub-w="130" sub-h="80"/>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Text Input" margin="0px 0.5% 5px 0.5%">
+            <label>Normal:</label>
+            <text-input>Hello World!</text-input>
+            <label>Hover:</label>
+            <text-input hover="true" ignore-input="true">Hello World!</text-input>
+            <label>Focus:</label>
+            <text-input focus="true" ignore-input="true">Hello World!</text-input>
+            <label>Disabled:</label>
+            <text-input disabled="true">Hello World!</text-input>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Text Input with regex" margin="0px 0.5% 5px 0.5%">
+            <label>Integers:</label>
+            <text-input match="^-?[0-9]*$">-0123</text-input>
+            <label>Decimals:</label>
+            <text-input match="^-?[0-9]*\\.?[0-9]*$">-0.6662</text-input>
+            <label>Capitals:</label>
+            <text-input match="[A-Z\\s]*">HELLO WORLD</text-input>
+            <label>No special characters:</label>
+            <text-input match="[A-Z|a-z|0-9|\\s]*">Hello World</text-input>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Multiline Text Input" margin="0px 0.5% 5px 0.5%">
+            <text-input multiline="true">Lŏřĕm ipšúm dőlőr šit ămĕt, čônšečtetúř ädipiscing eľit.&#xA;&#xA;Etiam cursus odio ut dui malesuada imperdiet.&#xA;&#xA;Nullam ac augue volutpat, aliquam ante sit amet, efficitur ipsum.</text-input>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Multiline Text Input" margin="0px 0.5% 5px 0.5%">
+            <text-area height="80px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus odio ut dui malesuada imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus odio ut dui malesuada imperdiet.</text-area>
+            <text-area height="80px" disabled="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus odio ut dui malesuada imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus odio ut dui malesuada imperdiet.</text-area>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Lists" margin="0px 0.5% 5px 0.5%">
+            <list height="75px">
+                <list-item>First</list-item>
+                <list-item disabled="true">Second</list-item>
+                <list-item selected="true">Third</list-item>
+                <list-item>Fourth</list-item>
+                <list-item>Fifth</list-item>
+            </list>
+            <list height="75px" disabled="true">
+                <list-item>First</list-item>
+                <list-item>Second</list-item>
+                <list-item>Third</list-item>
+                <list-item>Fourth</list-item>
+                <list-item>Fifth</list-item>
+            </list>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Switch" margin="0px 0.5% 5px 0.5%">
+            <label>Normal:</label>
+            <switch/>
+            <label>Hover:</label>
+            <switch hover="true" ignore-input="true"/>
+            <label>Focus:</label>
+            <switch focus="true" ignore-input="true"/>
+            <label>Disabled:</label>
+            <switch disabled="true"/>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Progress Bar" margin="0px 0.5% 5px 0.5%">
+            <label>Normal 0%:</label>
+            <progress-bar value="0.00" />
+            <label>Normal 50%:</label>
+            <progress-bar value="50.00" />
+            <label>Normal 75%:</label>
+            <progress-bar value="75.00" />
+            <label>Disabled 50%:</label>
+            <progress-bar value="50.00" disabled="true"/>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Progress Circle" margin="0px 0.5% 5px 0.5%">
+            <label>Normal 75%:</label>
+            <progress-circle value="75.00" />
+            <label>Disabled 33%:</label>
+            <progress-circle value="33.00" disabled="true"/>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Scrollable" margin="0px 0.5% 5px 0.5%">
+            <scrollable-layout height="200px" orientation="vertical" scroll-x="false" scroll-y="true">
+                <button>Button #1</button>
+                <button>Button #2</button>
+                <button>Button #3</button>
+                <button>Button #4</button>
+                <button>Button #5</button>
+                <button>Button #6</button>
+                <button>Button #7</button>
+                <button>Button #8</button>
+            </scrollable-layout>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Tabs" margin="0px 0.5% 5px 0.5%">
+            <tabs>
+                <tab-layout label="First" orientation="vertical">
+                    <label>This is the first tab.</label>
+                    <label>You can put any widget&#xA;in here!&#xA;&#xA;Works like a charm!</label>
+                </tab-layout>
+
+                <tab-layout label="Second" orientation="vertical">
+                    <label>This is the second tab.</label>
+                    <label>With some more text.&#xA;With some more text.&#xA;With some more text.&#xA;With some more text.&#xA;</label>
+                </tab-layout>
+
+                <tab-layout label="Third" orientation="vertical">
+                    <label>This is the last tab.&#xA;With extra button:</label>
+                    <button>Button</button>
+                </tab-layout>
+            </tabs>
+        </box>
+        <box width="32.333%" height="auto" orientation="vertical" label="Text" margin="0px 0.5% 5px 0.5%">
+            <text>
+                <para>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus odio ut dui malesuada imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</para>
+                <para>This is a text widget which can have</para>
+                <para></para>
+                <para color="#FF0000">Multiple paragraphs with different colors</para>
+                <para color="#0000FF" font="fontBold">Or different colors and fonts too!</para>
+                <para color="#33FF33" font="fontItalic">Italics too!</para>
+            </text>
+        </box>
+    </scrollable-layout>
+</window>

@@ -1,0 +1,69 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+!monkey.obj
+
+# Ignore build directory
+/build-*
+/build*/
+/temp*/
+/install/
+/dependencies/
+
+# Ignore html docs created by doxygen
+html/
+
+# Dependencies
+dependencies/
+
+.stackdump
+
+!cube.obj
+!cylinder.obj
+!plane.obj
+!planes.obj
+
+/Win32
+
+# Vuepress stuff
+_book/
+node_modules/
+dist/
+.publish/
+
+# Visual Studio Code settings
+.vscode
+.vs
+
+*.TMP
+
+# doxygen
+doxygen/*.md
+doxygen/xml
+!doxygen/index.md
