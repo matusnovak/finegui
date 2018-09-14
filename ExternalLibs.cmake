@@ -125,8 +125,11 @@ ExternalProject_Add(FINEGRAPHICS
 
 set(FINEGRAPHICS_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/finegraphics/include)
 if(MSVC)
-  set(FINEGRAPHICS_LIBRARY ${CMAKE_BINARY_DIR}/FINEGRAPHICS-prefix/src/FINEGRAPHICS-build/${CMAKE_BUILD_TYPE}/finegraphics.lib)
-  set(FINEGRAPHICS_BIN ${CMAKE_BINARY_DIR}/FINEGRAPHICS-prefix/src/FINEGRAPHICS-build/${CMAKE_BUILD_TYPE}/finegraphics.dll)
+  set(FINEGRAPHICS_LIBRARY 
+    optimized ${CMAKE_BINARY_DIR}/FINEGRAPHICS-prefix/src/FINEGRAPHICS-build/MinSizeRel/finegraphics.lib
+    debug ${CMAKE_BINARY_DIR}/FINEGRAPHICS-prefix/src/FINEGRAPHICS-build/Debug/finegraphics.lib
+  )
+  set(FINEGRAPHICS_BIN ${CMAKE_BINARY_DIR}/FINEGRAPHICS-prefix/src/FINEGRAPHICS-build/$<CONFIG>/finegraphics.dll)
 elseif(MINGW)
   set(FINEGRAPHICS_LIBRARY ${CMAKE_BINARY_DIR}/FINEGRAPHICS-prefix/src/FINEGRAPHICS-build/libfinegraphics.dll.a)
   set(FINEGRAPHICS_BIN ${CMAKE_BINARY_DIR}/FINEGRAPHICS-prefix/src/FINEGRAPHICS-build/libfinegraphics.dll)

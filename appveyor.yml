@@ -83,7 +83,7 @@ install:
   - cmd: set PATH=%MINGW_DIR_BIN%;%PATH%
   - cmd: if [%COMPILER%]==[mingw] (cd build-debug & cmake .. -G %GENERATOR% -DCMAKE_INSTALL_PREFIX="..\install" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEBUG_POSTFIX=_d || exit 1 & cd ..)
   - cmd: if [%COMPILER%]==[mingw] (cd build-release & cmake .. -G %GENERATOR% -DCMAKE_INSTALL_PREFIX="..\install" -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_DEBUG_POSTFIX=_d || exit 1 & cd ..)
-  - cmd: if [%COMPILER%]==[msvc] (cd build & cmake .. -G %GENERATOR% -DCMAKE_INSTALL_PREFIX="..\install" -DCMAKE_DEBUG_POSTFIX=_d || exit 1 & cd ..)
+  - cmd: if [%COMPILER%]==[msvc] (cd build & cmake .. -G %GENERATOR% -DCMAKE_INSTALL_PREFIX="..\install" -DCMAKE_DEBUG_POSTFIX=_d -DBUILD_EXAMPLES:BOOL=OFF || exit 1 & cd ..)
 
 build_script:
   - cmd: if [%COMPILER%]==[mingw] (cd build-debug & cmake --build . --target all || exit 1 & cd ..)

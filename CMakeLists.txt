@@ -65,7 +65,7 @@ if(BUILD_EXAMPLES)
         file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/examples/${FILENAME} DESTINATION ${CMAKE_BINARY_DIR}/examples)
     endforeach(FILENAME)
 
-    file(GLOB EXAMPLES ${CMAKE_CURRENT_SOURCE_DIR}/examples/*.cpp)
+    file(GLOB EXAMPLES ${CMAKE_CURRENT_SOURCE_DIR}/examples/nanovg_*.cpp)
     foreach(FILENAME ${EXAMPLES})
         # Get file name without extension
         get_filename_component(FILENAME_NO_EXT ${FILENAME} NAME_WE)
@@ -105,13 +105,43 @@ if(BUILD_EXAMPLES)
         set_property(TARGET ${EXAMPLE_PROJ} PROPERTY FOLDER "fineframework/examples") 
     endforeach(FILENAME)
 
-    add_dependencies(example_finegraphics_backend FINEGRAPHICS)
-    target_link_libraries(example_finegraphics_backend ${FINEGRAPHICS_LIBRARY})
-    add_custom_command(TARGET example_finegraphics_backend POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${FINEGRAPHICS_BIN} $<TARGET_FILE_DIR:example_finegraphics_backend>)
+    file(GLOB EXAMPLES ${CMAKE_CURRENT_SOURCE_DIR}/examples/finegraphics_*.cpp)
+    foreach(FILENAME ${EXAMPLES})
+        # Get file name without extension
+        get_filename_component(FILENAME_NO_EXT ${FILENAME} NAME_WE)
+        set(EXAMPLE_PROJ example_${FILENAME_NO_EXT})
+        add_executable(${EXAMPLE_PROJ} ${FILENAME})
+        add_dependencies(${EXAMPLE_PROJ} ${PROJECT_NAME})
+        add_dependencies(${EXAMPLE_PROJ} FINEGRAPHICS)
 
-    add_dependencies(example_align FINEGRAPHICS)
-    target_link_libraries(example_align ${FINEGRAPHICS_LIBRARY})
-    add_custom_command(TARGET example_align POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${FINEGRAPHICS_BIN} $<TARGET_FILE_DIR:example_align>)
+        # Examples dependencies
+        target_include_directories(${EXAMPLE_PROJ} PUBLIC ${GLFW3_INCLUDE_DIR} ${FREETYPE2_INCLUDE_DIR} ${LIBPNG_INCLUDE_DIR} ${NANOVG_INCLUDE_DIR} ${FINEGRAPHICS_INCLUDE_DIR})
+        target_link_libraries(${EXAMPLE_PROJ} finegui)
+
+        if(APPLE)
+            target_link_libraries(${EXAMPLE_PROJ} ${OPENGL_LIBRARY} ${COCOA_LIBRARY} ${IOKIT_LIBRARY} ${COREVIDEO_LIBRARY} ${FINEGRAPHICS_LIBRARY})
+        elseif(UNIX)
+            target_link_libraries(${EXAMPLE_PROJ} GL ${FINEGRAPHICS_LIBRARY})
+        elseif(MSVC)
+            target_link_libraries(${EXAMPLE_PROJ} opengl32 ${FINEGRAPHICS_LIBRARY})
+        else()
+            target_link_libraries(${EXAMPLE_PROJ} opengl32 ${FINEGRAPHICS_LIBRARY})
+        endif()
+        target_link_libraries(${EXAMPLE_PROJ} Threads::Threads)
+
+        add_custom_command(TARGET ${EXAMPLE_PROJ} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${FINEGRAPHICS_BIN} $<TARGET_FILE_DIR:${EXAMPLE_PROJ}>)
+
+        if(MSVC)
+            set_target_properties(${EXAMPLE_PROJ} PROPERTIES LINK_FLAGS "/SUBSYSTEM:CONSOLE")
+        endif()
+
+        # Compile with static stdlib ?
+        if(STATIC_STDLIB)
+            target_link_libraries(${EXAMPLE_PROJ} -static-libgcc -static-libstdc++)
+        endif(STATIC_STDLIB)
+
+        set_property(TARGET ${EXAMPLE_PROJ} PROPERTY FOLDER "fineframework/examples") 
+    endforeach(FILENAME)
 endif()
 
 # Add tests
