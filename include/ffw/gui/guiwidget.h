@@ -2,6 +2,7 @@
 #ifndef FFW_GUI_WIDGET
 #define FFW_GUI_WIDGET
 
+#include <cstdint>
 #include <functional>
 #include <vector>
 #include "constants.h"

@@ -697,34 +697,34 @@ static const ffw::GuiXmlParser::VisitorGuiTextPara visitorGuiTextPara;
 
 ///=============================================================================
 ffw::GuiXmlParser::GuiXmlParser(GuiWindow& window, const Registry& registry):window(window),registry(registry) {
-    visitors = {
-    { visitorGuiWindow.getKey(), &visitorGuiWindow },
-    { visitorGuiLayout.getKey(), &visitorGuiLayout },
-    { visitorGuiLabel.getKey(), &visitorGuiLabel },
-    { visitorGuiButton.getKey(), &visitorGuiButton },
-    { visitorGuiButtonToggle.getKey(), &visitorGuiButtonToggle },
-    { visitorGuiBox.getKey(), &visitorGuiBox },
-    { visitorGuiVerticalLayout.getKey(), &visitorGuiVerticalLayout },
-    { visitorGuiHorizontalLayout.getKey(), &visitorGuiHorizontalLayout },
-    { visitorGuiScrollableLayout.getKey(), &visitorGuiScrollableLayout },
-    { visitorGuiButtonPrimary.getKey(), &visitorGuiButtonPrimary },
-    { visitorGuiRadio.getKey(), &visitorGuiRadio },
-    { visitorGuiCheckbox.getKey(), &visitorGuiCheckbox },
-    { visitorGuiSlider.getKey(), &visitorGuiSlider },
-    { visitorGuiScrollbar.getKey(), &visitorGuiScrollbar },
-    { visitorGuiImageViewer.getKey(), &visitorGuiImageViewer },
-    { visitorGuiTextInput.getKey(), &visitorGuiTextInput },
-    { visitorGuiScrollableTextInput.getKey(), &visitorGuiScrollableTextInput },
-    { visitorGuiList.getKey(), &visitorGuiList },
-    { visitorGuiListItem.getKey(), &visitorGuiListItem },
-    { visitorGuiSwitch.getKey(), &visitorGuiSwitch },
-    { visitorGuiProgressBar.getKey(), &visitorGuiProgressBar },
-    { visitorGuiProgressCircle.getKey(), &visitorGuiProgressCircle },
-    { visitorGuiTabLayout.getKey(), &visitorGuiTabLayout },
-    { visitorGuiTabs.getKey(), &visitorGuiTabs },
-    { visitorGuiText.getKey(), &visitorGuiText },
-    { visitorGuiTextPara.getKey(), &visitorGuiTextPara },
-    };
+    visitors = std::initializer_list<std::unordered_map<std::string, const Visitor*>::value_type>({
+		std::make_pair(visitorGuiWindow.getKey(), &visitorGuiWindow),
+		std::make_pair(visitorGuiLayout.getKey(), &visitorGuiLayout),
+		std::make_pair(visitorGuiLabel.getKey(), &visitorGuiLabel),
+		std::make_pair(visitorGuiButton.getKey(), &visitorGuiButton),
+		std::make_pair(visitorGuiButtonToggle.getKey(), &visitorGuiButtonToggle),
+		std::make_pair(visitorGuiBox.getKey(), &visitorGuiBox),
+		std::make_pair(visitorGuiVerticalLayout.getKey(), &visitorGuiVerticalLayout),
+		std::make_pair(visitorGuiHorizontalLayout.getKey(), &visitorGuiHorizontalLayout),
+		std::make_pair(visitorGuiScrollableLayout.getKey(), &visitorGuiScrollableLayout),
+		std::make_pair(visitorGuiButtonPrimary.getKey(), &visitorGuiButtonPrimary),
+		std::make_pair(visitorGuiRadio.getKey(), &visitorGuiRadio),
+		std::make_pair(visitorGuiCheckbox.getKey(), &visitorGuiCheckbox),
+		std::make_pair(visitorGuiSlider.getKey(), &visitorGuiSlider),
+		std::make_pair(visitorGuiScrollbar.getKey(), &visitorGuiScrollbar),
+		std::make_pair(visitorGuiImageViewer.getKey(), &visitorGuiImageViewer),
+		std::make_pair(visitorGuiTextInput.getKey(), &visitorGuiTextInput),
+		std::make_pair(visitorGuiScrollableTextInput.getKey(), &visitorGuiScrollableTextInput),
+		std::make_pair(visitorGuiList.getKey(), &visitorGuiList),
+		std::make_pair(visitorGuiListItem.getKey(), &visitorGuiListItem),
+		std::make_pair(visitorGuiSwitch.getKey(), &visitorGuiSwitch),
+		std::make_pair(visitorGuiProgressBar.getKey(), &visitorGuiProgressBar),
+		std::make_pair(visitorGuiProgressCircle.getKey(), &visitorGuiProgressCircle),
+		std::make_pair(visitorGuiTabLayout.getKey(), &visitorGuiTabLayout),
+		std::make_pair(visitorGuiTabs.getKey(), &visitorGuiTabs),
+		std::make_pair(visitorGuiText.getKey(), &visitorGuiText),
+		std::make_pair(visitorGuiTextPara.getKey(), &visitorGuiTextPara)
+    });
 }
 
 ///=============================================================================

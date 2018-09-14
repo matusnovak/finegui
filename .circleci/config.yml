@@ -135,7 +135,6 @@ jobs:
           name: Build
           command: |
             cp -v /tmp/doxygen/*.md ./doxygen
-            rm -v ./doxygen/glcorearb_8h_source.md # Call stack failure in VuePress?!
             vuepress build
 
       - run:

@@ -1,10 +1,12 @@
 /* This file is part of FineFramework project */
 #ifndef FFW_GUI_TEXT_EDIT
 #define FFW_GUI_TEXT_EDIT
+
+#include <memory>
 #include <list>
+#include <regex>
 #include "guiwidget.h"
 #include "guiscrollable.h"
-#include <regex>
 
 namespace ffw {
     /**
