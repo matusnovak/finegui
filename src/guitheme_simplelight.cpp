@@ -530,15 +530,12 @@ ffw::GuiThemeSimpleLight::GuiThemeSimpleLight() {
         }
     };
 
-    dummy = GuiDummy::Style{
-        // Self
-        GuiWidget::Style{
-            GuiStyle(NO_BACKGROUND, NO_BORDER, NO_OUTLINE, TEXT_COLOR_NORMAL, BACKGROUND_COLOR_HOVER),
-            GuiStyle(NO_BACKGROUND, NO_BORDER, NO_OUTLINE, TEXT_COLOR_NORMAL, BACKGROUND_COLOR_HOVER),
-            GuiStyle(NO_BACKGROUND, NO_BORDER, NO_OUTLINE, TEXT_COLOR_NORMAL, BACKGROUND_COLOR_HOVER),
-            GuiStyle(NO_BACKGROUND, NO_BORDER, NO_OUTLINE, TEXT_COLOR_DISABLED, BACKGROUND_COLOR_HOVER),
-            GuiDefaults(GuiStyle::Margin(0), GuiStyle::Padding(0), GuiAlign::TOP_LEFT, GuiUnits2D(guiPercent(100), guiWrap()))
-        }
+    dummy = GuiWidget::Style{
+        GuiStyle(NO_BACKGROUND, NO_BORDER, NO_OUTLINE, TEXT_COLOR_NORMAL, BACKGROUND_COLOR_HOVER),
+        GuiStyle(NO_BACKGROUND, NO_BORDER, NO_OUTLINE, TEXT_COLOR_NORMAL, BACKGROUND_COLOR_HOVER),
+        GuiStyle(NO_BACKGROUND, NO_BORDER, NO_OUTLINE, TEXT_COLOR_NORMAL, BACKGROUND_COLOR_HOVER),
+        GuiStyle(NO_BACKGROUND, NO_BORDER, NO_OUTLINE, TEXT_COLOR_DISABLED, BACKGROUND_COLOR_HOVER),
+        GuiDefaults(GuiStyle::Margin(0), GuiStyle::Padding(0), GuiAlign::TOP_LEFT, GuiUnits2D(guiPercent(100), guiWrap()))
     };
 }
 
