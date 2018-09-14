@@ -40,7 +40,7 @@ Please note that if you have downloaded the finegui from the GitHub releases, th
 3. In Configuration Properties -> C++ -> General -> Additional Include Directories add `C:\path\to\finegui\install\include`.
 4. In Configuration Properties -> Linker -> General -> Additional Library Directories add  `C:\path\to\finegui\install\lib`.
 5. In Configuration Properties -> Linker -> Input -> Additional Dependencies add `finegui.lib`.
-6. Copy the `fineframework.dll` from `C:\path\to\finegui\install\bin` to your project build directory (where your project exe will be generated). This is not needed during the compilation, but you will need it to distribute or run the program. Otherwise you will get "The program can't start because finegui.dll is missing from your computer. Alternatively, put it in your PATH variable.
+6. Copy the `finegui.dll` from `C:\path\to\finegui\install\bin` to your project build directory (where your project exe will be generated). This is not needed during the compilation, but you will need it to distribute or run the program. Otherwise you will get "The program can't start because finegui.dll is missing from your computer. Alternatively, put it in your PATH variable.
 
 ## Linux
 
