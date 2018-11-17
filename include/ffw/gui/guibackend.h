@@ -23,7 +23,7 @@ namespace ffw {
         virtual void startRender() = 0;
         virtual void endRender() = 0;
         virtual void setScissors(const ffw::Pointf& pos, const ffw::Pointf& size) const = 0;
-        virtual void clearWithColor(const ffw::Color& color) const = 0;
+        virtual void clearWithColor(const ffw::Color& color, const ffw::Pointf& pos, const ffw::Pointf& size) const = 0;
         virtual void drawRectangle(const ffw::Pointf& pos, const ffw::Pointf& size, const ffw::Color& color) const = 0;
         virtual void drawRectangleRounded(const ffw::Pointf& pos, const ffw::Pointf& size, const ffw::Color& color, float tl, float tr, float br, float bl) const = 0;
         virtual void drawLine(const ffw::Pointf& start, const ffw::Pointf& end, const ffw::Color& color, float width = 1.0f) const = 0;

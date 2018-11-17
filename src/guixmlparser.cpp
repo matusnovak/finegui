@@ -247,7 +247,7 @@ void ffw::GuiXmlParser::VisitorGuiWidget::defaults(const Token& token, GuiWidget
     }
     IF_ATTRIBUTE_EXP("disabled", instance->setDisabled(token.getAttributeBool("disabled")));
     IF_ATTRIBUTE_EXP("offset-x", instance->setOffset(Pointf(token.getAttributePixels("offset-x"), token.getAttributePixels("offset-y"))));
-    IF_ATTRIBUTE_EXP("offset-y", instance->setWrap(token.getAttributeBool("wrap")));
+    IF_ATTRIBUTE_EXP("wrap", instance->setWrap(token.getAttributeBool("wrap")));
     IF_ATTRIBUTE_EXP("hidden", instance->setHidden(token.getAttributeBool("hidden")));
     IF_ATTRIBUTE_EXP("hover", instance->setHover(token.getAttributeBool("hover")));
     IF_ATTRIBUTE_EXP("focus", instance->setFocus(token.getAttributeBool("focus")));

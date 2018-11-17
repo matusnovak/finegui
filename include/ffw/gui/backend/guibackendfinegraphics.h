@@ -243,11 +243,12 @@ namespace ffw {
         void setScissors(const ffw::Pointf& pos, const ffw::Pointf& size) const override {
             canvas.scissor(pos, size);
         }
-        void clearWithColor(const ffw::Color& color) const override {
-            canvas.beginPath();
-            canvas.rect(Vec2f(0.0f), getSize());
-            canvas.fillColor(color);
-            canvas.fill();
+        void clearWithColor(const ffw::Color& color, const ffw::Pointf& pos, const ffw::Pointf& size) const override {
+            glEnable(GL_SCISSOR_TEST);
+            glScissor(pos.x, getSize().y - pos.y - size.y, size.x, size.y);
+            glClearColor(color.r, color.g, color.b, color.a);
+            glClear(GL_COLOR_BUFFER_BIT);
+            glDisable(GL_SCISSOR_TEST);
         }
         void drawRectangle(const ffw::Pointf& pos, const ffw::Pointf& size, 
             const ffw::Color& color) const override {

@@ -762,7 +762,7 @@ void ffw::GuiWidget::render(const ffw::Pointf& clippos, const ffw::Pointf& clips
             context->setScissors(VEC2_FIX(childclippos), VEC2_FIX(childclipsize));
         
             if(clear){
-                context->clearWithColor(rgba(0x00000000));
+                context->clearWithColor(rgba(0x00000000), childclippos, childclipsize);
 
                 // Go up through every parent and draw its background
                 if(parent != NULL){

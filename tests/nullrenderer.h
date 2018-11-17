@@ -193,7 +193,9 @@ public:
         (void)p;
         (void)s;
     }
-    void clearWithColor(const ffw::Color& color) const override {
+    void clearWithColor(const ffw::Color& color, const ffw::Pointf& pos, const ffw::Pointf& size) const override {
+        (void)pos;
+        (void)size;
         (void)color;
     }
     int renderCounter() const {
