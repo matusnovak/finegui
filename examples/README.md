@@ -8,7 +8,7 @@ The following are examples from <https://github.com/matusnovak/finegui/blob/mast
 
 [All widgets in one window - FineGraphics backend](https://github.com/matusnovak/finegui/blob/master/examples/finegraphics_backend_all.cpp)
 
-![gif](https://github.com/matusnovak/finegui/blob/master/examples/all-widgets.png)
+![gif](https://github.com/matusnovak/finegui/blob/master/examples/all-widgets.gif)
 
 ![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/finegraphics_backend_all_1.png)
 
