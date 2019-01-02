@@ -16,6 +16,11 @@ static T lerp(const T& a, const T& b, float w) {
 }
 
 ///=============================================================================
+static float remap(const float value, const float low1, const float high1, const float low2, const float high2) {
+	return low2 + (value - low1) * (high2 - low2) / (high1 - low1);
+}
+
+///=============================================================================
 ffw::GuiSlider::GuiSlider(GuiWindow* context, const bool vertical):GuiWidget(context),styleButton(nullptr),styleBar(nullptr),vertical(vertical) {
     setDropFocus();
 
@@ -160,9 +165,9 @@ void ffw::GuiSlider::eventRender(const ffw::Pointf& contentoffset, const ffw::Po
         ffw::Pointf s(thick.x, thick.y);
         
         if(inverse){
-            height = float((1.0f - ((value - range.x) / float(range.y))) * thick.y);
+			height = thick.y - ::remap(value, range.x, range.y, 0.0f, thick.y);
         } else {
-            height = float(((value - range.x) / float(range.y)) * thick.y);
+			height = ::remap(value, range.x, range.y, 0.0f, thick.y);
         }
         height = ::clamp(height, 0.0f, thick.y);
 
@@ -192,12 +197,9 @@ void ffw::GuiSlider::eventRender(const ffw::Pointf& contentoffset, const ffw::Po
             }
         }
 
-        height = float(((value - range.x) / float(range.y)) * (contentsize.y - buttonSizeReal.y));
-        height = ::clamp(height, 0.0f, (contentsize.y - buttonSizeReal.y));
-
         p.set(contentoffset);
         p.x += contentsize.x / 2;
-        p.y += height;
+        p.y += ::remap(value, range.x, range.y, 0.0f, contentsize.y - buttonSizeReal.y);
         p.x -= buttonSizeReal.x /2;
 
         renderComponent(p, buttonSizeReal, cStyleButton);
@@ -210,9 +212,9 @@ void ffw::GuiSlider::eventRender(const ffw::Pointf& contentoffset, const ffw::Po
         ffw::Pointf s(contentsize.x, thick.y);
         
         if(inverse){
-            width = float((1.0f - ((value - range.x) / float(range.y))) * thick.x);
+			width = thick.x - ::remap(value, range.x, range.y, 0.0f, thick.x);
         } else {
-            width = float(((value - range.x) / float(range.y)) * thick.x);
+			width = ::remap(value, range.x, range.y, 0.0f, thick.x);
         }
         width = ::clamp(width, 0.0f, thick.x);
 
@@ -242,12 +244,9 @@ void ffw::GuiSlider::eventRender(const ffw::Pointf& contentoffset, const ffw::Po
             }
         }
 
-        width = float(((value - range.x) / float(range.y)) * (contentsize.x - buttonSizeReal.x));
-        width = ::clamp(width, 0.0f, (contentsize.x - buttonSizeReal.x));
-
         p.set(contentoffset);
         p.y += contentsize.y / 2;
-        p.x += width;
+        p.x += ::remap(value, range.x, range.y, 0.0f, contentsize.x - buttonSizeReal.x);
         p.y -= buttonSizeReal.y /2;
 
         renderComponent(p, buttonSizeReal, cStyleButton);

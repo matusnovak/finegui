@@ -7,6 +7,34 @@
 namespace ffw {
     /**
     * @ingroup gui
+    * @brief Create tabs widget
+    * @details This widget will create one or more tabs. By clicking
+    * on the tab at the top will show appropriate widget(s) assigned.
+    * For example it is possible to add a layout under each tab, example
+    * code below.
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * auto tabs = new ffw::GuiTabs(&gui);
+    * ffw::GuiVerticalLayout* last = nullptr;
+    * for (auto i = 1; i <= 3; i++) {
+    *     auto layout = new ffw::GuiVerticalLayout(&gui);
+    *     auto button = new ffw::GuiButton(&gui, "Button in Tab #" + std::to_string(i));
+    *     layout->addWidget(button);
+    *     auto tab = tabs->addTab("Tab #" + std::to_string(i), layout);
+    *     tab->setSize(ffw::guiPercent(33.33f), tab->getSize().y);
+    *     if (i == 3) last = layout;
+    * }
+    * tabs->showTabByWidget(last);
+    * 
+    * root->addWidget(tabs);
+    * // Do not free the created widgets! They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiTabs : public GuiWidget {
     public:

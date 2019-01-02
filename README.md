@@ -9,7 +9,9 @@
 
 ## Introduction 
 
-The FineGui is a standalone library that provides a simple utf8 enabled graphical user interface with a linear layout system similar to Android GUI development. The library also offers experimental XML parser that generates GUI structure for you. This library is not meant to be the best GUI library in the world. Instead, it offers a simple backend API that can be integrated into any renderer you want. The purpose of this abstract backend is to enable embeding this library into IoT devices that, for example, do not use hardware acceleration. The backend would be your custom CPU based renderer that writes pixels directly into, for example, an LCD. However, there is FineGraphics and NanoVG backends included. See the example folder for more. 
+![gif](https://github.com/matusnovak/finegui/blob/master/examples/align.gif)
+
+The FineGui is a standalone library that provides a simple utf8 enabled graphical user interface with a linear layout system similar to Android GUI development. The rendering and updating logic behind this library is done as a framebuffer. For example, when looping inside your render function, the gui window will not render each frame, instead it will update and render only when necessary (user clicks on a button -> change color). The library also offers experimental XML parser that generates GUI structure for you. This library is not meant to be the best GUI library in the world. Instead, it offers a simple backend API that can be integrated into any renderer you want. The purpose of this abstract backend is to enable embeding this library into IoT devices that, for example, do not use hardware acceleration. The backend would be your custom CPU based renderer that writes pixels directly into, for example, an LCD. However, there is FineGraphics and NanoVG backends included. See the example folder for more.
 
 This library uses only header only utfcpp library and tinyxml2, all other libraries are only needed to run the examples. The third party libraries are optional, can be disabled through cmake `-DBUILD_EXAMPLES:BOOL=OFF` and are compiled automatically though cmake. 
 
@@ -35,9 +37,141 @@ All dependencies listed here are already included as a git submodule and will be
 * More unit tests
 * More backends such as a simple CPU pixel renderer
 
-## Quick example
+## Code example
 
-TODO
+![screenshot](https://github.com/matusnovak/finegui/blob/master/screenshot.png)
+
+Looking for more examples? Try the [examples folder](examples/README.md).
+
+```cpp
+// This defines the theme of the entire window.
+// You can modify (or copy) the theme as you want.
+// You can also apply a specific theme for any of the 
+// widgets by calling widget->setTheme(&customTheme);
+// Or by widget->setStyle(&customStyle);
+ffw::GuiThemeSimpleLight theme;
+
+// This is a GUI window, you can create many of them,
+// they are independent! We are using NanoVG as an example,
+// but creating your own backend is very easy!
+auto gui = ffw::GuiWindowNanoVG(nvg);
+
+// Creating a font is backend specific, we will use FreeSans.ttf
+auto font = ffw::GuiFontNanoVG(nvg, "FreeSans.ttf", 16.0f);
+
+// Default parameters
+gui.setTheme(&theme);
+gui.setPos(0, 0);
+gui.setDefaultFont(&font);
+
+// Each window comes with it's own ffw::GuiBody
+// Think of it as <body></body> in html.
+auto root = gui.getLayout();
+
+// Warping enables that if there is not enough space
+// to fit the widgets horizontally, it will be moved
+// to the next row.
+// When using verticall layout, widgets will be moved
+// to the right (imagine columns).
+root->setWrap(true);
+
+// Create two columns with 47.5% width each and 5% margin between...
+auto left = new ffw::GuiLayout(&gui, ffw::GuiOrientation::VERTICAL);
+left->setSize(ffw::guiPercent(47.5f), ffw::guiPercent(50.0f));
+left->setMarginRight(ffw::guiPercent(2.5f)); // 2.5% margin on right
+
+auto right = new ffw::GuiLayout(&gui, ffw::GuiOrientation::VERTICAL);
+right->setSize(ffw::guiPercent(47.5f), ffw::guiPercent(50.0f));
+right->setMarginLeft(ffw::guiPercent(2.5f)); // 2.5% margin on left
+
+auto bottom = new ffw::GuiHorizontalLayout(&gui);
+bottom->setSize(ffw::guiPercent(100.0f), ffw::guiPercent(45.0f));
+bottom->setMarginTop(ffw::guiPercent(5.0f));
+bottom->setAlign(ffw::GuiAlign::CENTER);
+bottom->setWrap(true);
+
+// Start of left column
+auto label1 = new ffw::GuiLabel(&gui, "Left column 50% width:");
+left->addWidget(label1);
+
+auto button1 = new ffw::GuiButton(&gui, "I am on the left!");
+button1->addEventCallback([](const ffw::GuiEvent e) {
+    const auto btn = dynamic_cast<const ffw::GuiButton*>(e.widget);
+    std::cout << "Button with label: " << btn->getLabel() << " clicked!" << std::endl;
+}, ffw::GuiEventType::ACTION);
+left->addWidget(button1);
+
+auto checkbox1 = new ffw::GuiCheckbox(&gui, "Hello World");
+checkbox1->setValue(true);
+left->addWidget(checkbox1);
+
+auto radio1 = new ffw::GuiRadio(&gui, "Radio A", 100);
+auto radio2 = new ffw::GuiRadio(&gui, "Radio A", 200, radio1);
+auto radio3 = new ffw::GuiRadio(&gui, "Radio A", 300, radio1);
+radio1->setValue(300);
+left->addWidget(radio1);
+left->addWidget(radio2);
+left->addWidget(radio3);
+
+// Start of right column
+auto label2 = new ffw::GuiLabel(&gui, "Right column 50% width:");
+right->addWidget(label2);
+
+auto button2 = new ffw::GuiButton(&gui, "I am on the right!");
+right->addWidget(button2);
+
+auto input = new ffw::GuiScrollableTextInput(&gui);
+input->setSize(ffw::guiPercent(100.0f), ffw::guiPixels(100.0f));
+input->setValue(
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    "\n"
+    "\n"
+    "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+);
+right->addWidget(input);
+
+// Start of bottom column
+auto label3 = new ffw::GuiLabel(&gui, "Another column 100% width with align \"CENTER\"");
+label3->setSize(ffw::guiWrap(), ffw::guiWrap());
+bottom->addWidget(label3);
+
+for (auto i = 0; i < 3; i++) {
+    auto button = new ffw::GuiButtonToggle(&gui, "Button #" + std::to_string(i));
+    button->setSize(ffw::guiPercent(30.0f), ffw::guiWrap());
+    if (i != 2) button->setMarginRight(ffw::guiPercent(5.0f));
+    bottom->addWidget(button);
+}
+
+// Add everything together
+root->setOrientation(ffw::GuiOrientation::HORIZONTAL);
+root->addWidget(left);
+root->addWidget(right);
+root->addWidget(bottom);
+
+// We do not DELETE ANY widgets! The lifetime of
+// widgets is handled by the window and parent widgets.
+
+while (true) {
+    // Rendering loop
+    gui->update();
+    gui->poolEvents();
+    gui->render();
+
+    // Render the framebuffer from the GuiWindow.
+    // This example uses NanoVG, or you can use your own backend.
+    nvgBeginFrame(nvg, viewport.x, viewport.y, 1.0f);
+    const auto img = nvgImagePattern(nvg, 0, 0, viewport.x, viewport.y, 0, /* ---> */ gui.getFbo()->image, 1.0f);
+    nvgBeginPath(nvg);
+    nvgRect(nvg, 0.0f, 0.0f, viewport.x, viewport.y);
+    nvgFillPaint(nvg, img);
+    nvgFill(nvg);
+    nvgEndFrame(nvg);
+}
+
+// No manual cleanup necessary!
+// All widgets will be freed once the ffw::GuiWindow 
+// falls out of the scope.
+```
 
 ## Requirements
 

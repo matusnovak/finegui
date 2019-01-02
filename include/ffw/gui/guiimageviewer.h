@@ -9,6 +9,36 @@ namespace ffw {
 
     /**
     * @ingroup gui
+    * @brief Create an image widget with optional label
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg); 
+    * auto root = gui.getLayout();
+    * 
+    * // Load pixels
+    * std::unique_ptr<unsigned char[]> pixels(new unsigned char[360 * 240 * 4]);
+    * std::ifstream input("owl.raw", std::ios::in | std::ios::binary);
+    * input.read((char*)pixels.get(), 360 * 240 * 4);
+    * 
+    * // Create image
+    * // Make sure the image is alive while the window is being rendered!
+    * // Depending on your backend implementation, you can free the pixels
+    * // after creating the image! When using NanoVG or FineGraphics
+    * // the pixels are copied into the GPU memory.
+    * auto image = ffw::GuiImageNanoVG(nvg, 360, 240, 0, pixels.get());
+    * pixels.reset();
+    * 
+    * auto viewer = new ffw::GuiImageViewer(&gui, &image);
+    * viewer->setSize(ffw::guiPercent(50.0f), ffw::guiWrap());
+    * viewer->setLabel("Hello World!");
+    * viewer->setAlign(ffw::GuiAlign::TOP_LEFT);
+    * 
+    * root->addWidget(label);
+    * // Do not free the created widgets! They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiImageViewer : public GuiWidget {
     public:

@@ -5,6 +5,28 @@
 namespace ffw {
     /**
     * @ingroup gui
+    * @brief Create a basic button with a label
+    * @details Creates a basic button with a label. A click callback
+    * can be added, see example below.
+    * @code
+    * // Example creating a button
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * auto button = new ffw::GuiButton(&gui, "Button");
+    * button->setLabel("Button #1"); // Overwrites "Button"
+    * button->setSize(ffw::guiPercent(100.0f), ffw::guiPixels(25.0f));
+    * button->addEventCallback([](ffw::GuiEvent e) {
+    *     std::cout << "Clicked!" << std::endl;
+    * }, ffw::GuiEventType::ACTION);
+    * 
+    * root->addWidget(button);
+    * // Do not free the created widgets! They will be deleted by window itself!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiButton : public GuiWidget {
     public:

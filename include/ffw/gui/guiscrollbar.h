@@ -7,6 +7,31 @@
 namespace ffw {
     /**
     * @ingroup gui
+    * @brief Create a scroll bar widget
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * // To make it vertical, change the second parameter to true
+    * auto scrollbar = new ffw::GuiScrollBar(&gui, false);
+    * scrollbar->setSize(ffw::guiPercent(100.0f), ffw::guiPixels(30.0f));
+    * scrollbar->setRange(50.0f, 100.0f);
+    * scrollbar->setIncrements(5.0f); // Affects the left and right buttons
+    * scrollbar->setValue(75.0f); // The scroll button will be in the middle
+    * auto value = scrollbar->getValue(); // Returns 75.0f
+    * scrollbar->addEventCallback([](ffw::GuiEvent e) {
+    *     // The value is between the 50.0 and 100.0 range
+    *     std::cout << "Value changed: " << e.data.action.value << std::endl;
+    * }, ffw::GuiEventType::ACTION);
+    * 
+    * root->addWidget(scrollbar);
+    * // Do not free the created widgets!
+    * // They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiScrollBar : public GuiWidget {
     public:

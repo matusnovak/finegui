@@ -7,6 +7,57 @@
 namespace ffw {
     /**
     * @ingroup gui
+    * @brief Create a scrollable widget
+    * @details This widget accepts any kind of widgets. If the inner widget
+    * exceeds the size of the scrollable widget, the scrollbars will enable.
+    * Using the scrollbars, the inner widget is moved up or down, or sideways.
+    * You can configure which scrollbars are meant to be shown via the constructor.
+    * A class ffw::GuiScrollableLayout is available which uses ffw::GuiScrollable
+    * with ffw::GuiLayout as the inner widget.
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * // Creates a verticall layout with a scrollbar on the right.
+    * // 3rd parameter -> bottom scrollbar
+    * // 4th parameter -> right scrollbar
+    * auto scrollable = new ffw::GuiScrollableLayout(&gui, ffw::GuiOrientation::VERTICAL, false, true);
+    * scrollable->setSize(ffw::guiPercent(100.0f), ffw::guiPercent(100.0f));
+    * 
+    * // Get the inner widget that will be scrolled.
+    * // In this case it's the layout.
+    * auto layout = scrollable->getInner();
+    * 
+    * const auto goDown = new ffw::GuiButton(&gui, "Click to scroll to 50%");
+    * goDown->addEventCallback([=](ffw::GuiEvent e) {
+    *     // Returns the maximum scroll values.
+    *     // Note that the returned type is ffw::Pointf and the x 
+    *     // component (minimum scrollbar range) is always going to be zero!
+    *     // The y component (maximum scroll range) is what you need.
+    *     const auto max = scrollable->getVscroll()->getRange();
+    * 
+    *     // Scroll down 50%
+    *     // This only works after gui.update() has been called
+    *     // at least once! The update() function will update 
+    *     // the scrollbars.
+    *     // Therefore we are putting this in a button callback.
+    *     scrollable->getVscroll()->setValue(max.y / 2.0f);
+    * }, ffw::GuiEventType::ACTION);
+    * 
+    * layout->addWidget(goDown);
+    * 
+    * for (auto i = 0; i < 32; i++) {
+    *     const auto button = new ffw::GuiButton(&gui, "Button #" + std::to_string(i));
+    *     layout->addWidget(button);
+    * }
+    * 
+    * root->addWidget(scrollable);
+    * // Do not free the created widgets! They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiScrollable : public GuiWidget {
     public:

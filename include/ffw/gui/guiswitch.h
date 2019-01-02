@@ -5,6 +5,27 @@
 namespace ffw {
     /**
     * @ingroup gui
+    * @brief Create a switch widget
+    * @details This widget acts exactly as the ffw::GuiButtonToggle
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * auto button = new ffw::GuiSwitch(&gui);
+    * button->setSize(ffw::guiPixels(50.0f), ffw::guiPixels(25.0f));
+    * button->addEventCallback([](ffw::GuiEvent e) {
+    *     std::cout << "Clicked! Status: " << e.data.action.value << std::endl;
+    * }, ffw::GuiEventType::ACTION);
+    * auto isPressed = button->getValue(); // Programatically get on/off state
+    * button->setValue(true); // Programatically set on/off state
+    * 
+    * root->addWidget(button);
+    * // Do not free the created widgets! They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiSwitch : public GuiWidget {
     public:

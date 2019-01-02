@@ -7,6 +7,33 @@
 namespace ffw {
     /**
     * @ingroup gui
+    * @brief Create a text widget
+    * @details This widget is simply a little more advanced ffw::GuiLabel.
+    * If you are looking for user input widget, see ffw::GuiTextInput
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * // Make sure these three instances of font
+    * // are alive while the GUI is rendering!
+    * // If you free these fonts before gui.update() or
+    * // gui.render() it will cause the program to crash!
+    * auto fontRegular = ffw::GuiFontFineGraphics(canvas, "FreeSans.ttf", 16.0f))
+    * auto fontBold = ffw::GuiFontFineGraphics(canvas, "FreeSansBold.ttf", 32.0f);
+    * auto fontItalic = ffw::GuiFontFineGraphics(canvas, "FreeSansOblique.ttf", 16.0f);
+    * 
+    * auto text = new ffw::GuiText(&gui);
+    * text->addParagraph("Title", ffw::rgb(10, 10, 10), fontBold.get());
+    * text->addParagraph("Lorem Ipsum Donor");
+    * text->addParagraph("Italic text", ffw::rgb(10, 90, 180), fontItalic.get());
+    * 
+    * root->addWidget(text);
+    * // Do not free the created widgets! They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiText: public GuiWidget {
     public:

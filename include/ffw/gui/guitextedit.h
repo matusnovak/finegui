@@ -11,6 +11,42 @@
 namespace ffw {
     /**
     * @ingroup gui
+    * @brief Create a user input text widget
+    * @details
+    * Example code below creating a single line widget
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * auto input = new ffw::GuiTextInput(&gui, false);
+    * input->setSize(ffw::guiPercent(100.0f), ffw::guiPixels(25.0f));
+    * input->setValue("Lorem Ipsum");
+    * auto text = input->getValue(); // Returns "Lorem Ipsum"
+    * 
+    * root->addWidget(text);
+    * // Do not free the created widgets! They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
+    * Example code below creating a multi line widget
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * auto input = new ffw::GuiTextInput(&gui, true);
+    * input->setSize(ffw::guiPercent(100.0f), ffw::guiPixels(100.0f));
+    * input->setValue("Lorem ipsum dolor sit amet\nconsectetur adipiscing elit.");
+    * auto text = input->getValue(); // Returns the string above
+    * 
+    * root->addWidget(text);
+    * // Do not free the created widgets! They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiTextInput : public GuiWidget {
     public:
@@ -102,6 +138,23 @@ namespace ffw {
 
     /**
     * @ingroup gui
+    * @brief Create a user input text widget with a scroll bar
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * auto input = new ffw::GuiScrollableTextInput(&gui);
+    * input->setSize(ffw::guiPercent(100.0f), ffw::guiPixels(100.0f));
+    * input->setValue("Lorem ipsum dolor sit amet....");
+    * auto text = input->getValue(); // Returns the string above
+    * 
+    * root->addWidget(text);
+    * // Do not free the created widgets! They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiScrollableTextInput : public GuiScrollable {
     public:

@@ -10,8 +10,7 @@ git clone https://github.com/matusnovak/finegui
 cd finegui
 
 # Download the dependencies
-git submodule init
-git submodule update
+git submodule update --init --recursive
 
 # Create build folder and run cmake
 mkdir build
@@ -59,8 +58,7 @@ git clone https://github.com/matusnovak/finegui
 cd finegui
 
 # Download the dependencies
-git submodule init
-git submodule update
+git submodule update --init --recursive
 
 # Create build folder and run cmake
 mkdir build
@@ -111,8 +109,7 @@ git clone https://github.com/matusnovak/finegui
 cd finegui
 
 # Download the dependencies
-git submodule init
-git submodule update
+git submodule update --init --recursive
 
 # Create build folder and run cmake
 mkdir build

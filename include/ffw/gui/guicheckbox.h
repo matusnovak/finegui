@@ -5,6 +5,28 @@
 namespace ffw {
     /**
      * @ingroup gui
+     * @brief Create a checkbox widget with on/off status and a label
+     * @code
+     * // Example creating a checkbox
+     * auto gui = ffw::GuiWindowNanoVG(nvg);
+     * auto root = gui.getLayout();
+     * 
+     * auto checkbox = new ffw::GuiCheckbox(&gui, "I am a checkbox");
+     * checkbox->setLabel("I am a new label");
+     * checkbox->setSize(ffw::guiPercent(100.0f), ffw::guiPixels(25.0f));
+     * checkbox->addEventCallback([](ffw::GuiEvent e) {
+     *     std::cout << "Clicked! Status: " << e.data.action.value << std::endl;
+     * }, ffw::GuiEventType::ACTION);
+     * auto isPressed = checkbox->getValue(); // Programatically get on/off state
+     * checkbox->setValue(true); // Programatically set on/off state
+     * 
+     * root->addWidget(checkbox);
+     * // Do not free the created widgets! They will be deleted by window itself!
+     * 
+     * while(true){
+     *     // Render the gui
+     * }
+     * @endcode
      */
     class FFW_API GuiCheckbox: public GuiWidget {
     public:

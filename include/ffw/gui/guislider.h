@@ -5,6 +5,29 @@
 namespace ffw {
     /**
      * @ingroup gui
+     * @brief Create a slider widget
+     * @code
+     * auto gui = ffw::GuiWindowNanoVG(nvg);
+     * auto root = gui.getLayout();
+     * 
+     * // To make it vertical, change the second parameter to true
+     * auto slider = new ffw::GuiSlider(&gui, false);
+     * slider->setSize(ffw::guiPercent(100.0f), ffw::guiPixels(30.0f));
+     * slider->setRange(50.0f, 100.0f);
+     * slider->setValue(75.0f); // The scroll button will be in the middle
+     * auto value = slider->getValue(); // Returns 75.0f
+     * slider->addEventCallback([](ffw::GuiEvent e) {
+     *     // The value is between the 50.0 and 100.0 range
+     *     std::cout << "Value changed: " << e.data.action.value << std::endl;
+     * }, ffw::GuiEventType::ACTION);
+     * 
+     * root->addWidget(slider);
+     * // Do not free the created widgets! They will be deleted by the gui window!
+     * 
+     * while(true){
+     *     // Render the gui
+     * }
+     * @endcode
      */
     class FFW_API GuiSlider: public GuiWidget {
     public:

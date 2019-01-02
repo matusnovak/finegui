@@ -5,6 +5,34 @@
 namespace ffw {
     /**
     * @ingroup gui
+    * @brief Create a vertical list widget
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * auto list = new ffw::GuiList(&gui);
+    * list->setSize(ffw::guiPercent(100.0f), ffw::guiPercent(50.0f));
+    * ffw::GuiList::Item* second = nullptr;
+    * for (auto i = 0; i < 30; i++) {
+    *     const auto item = list->addItem("List Item number #" + std::to_string(i));
+    *     if (i == 1) second = item;
+    * 
+    *     item->addEventCallback([=](ffw::GuiEvent e) {
+    *         std::cout << "callback from item index: " << i << std::endl;
+    *     }, ffw::GuiEventType::ACTION);
+    * }
+    * list->setSelected(second);
+    * list->addEventCallback([=](ffw::GuiEvent e) {
+    *     std::cout << "callback from list index: " << e.data.action.value << std::endl;
+    * }, ffw::GuiEventType::ACTION);
+    * 
+    * root->addWidget(list);
+    * // Do not free the created widgets! They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiList : public GuiScrollableLayout {
     public:

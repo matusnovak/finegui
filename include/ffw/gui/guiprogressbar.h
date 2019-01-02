@@ -5,6 +5,23 @@
 namespace ffw {
     /**
     * @ingroup gui
+    * @brief Create a progress bar widget
+    * @code
+    * auto gui = ffw::GuiWindowNanoVG(nvg);
+    * auto root = gui.getLayout();
+    * 
+    * auto progress = new ffw::GuiProgressBar(&gui);
+    * progress->setSize(ffw::guiPercent(100.0f), ffw::guiPixels(25.0f));
+    * progress->setValue(75.0f);
+    * auto percent = progress->getValue(); // Programatically get value
+    * 
+    * root->addWidget(progress);
+    * // Do not free the created widgets! They will be deleted by the gui window!
+    * 
+    * while(true){
+    *     // Render the gui
+    * }
+    * @endcode
     */
     class FFW_API GuiProgressBar : public GuiWidget {
     public:

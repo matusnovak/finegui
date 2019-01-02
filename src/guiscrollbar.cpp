@@ -223,11 +223,17 @@ void ffw::GuiScrollBar::recalculate(const ffw::Pointf& s) {
         left->setSize(s.x, s.x);
         right->setSize(s.x, s.x);
         slider->setSize(s.x, s.y - s.x * 2);
+		auto btn = slider->getButtonSize();
+		btn.x = s.x - 2.0f;
+		slider->setButtonSize(btn);
     }
     else {
         left->setSize(s.y, s.y);
         right->setSize(s.y, s.y);
         slider->setSize(s.x - s.y * 2, s.y);
+		auto btn = slider->getButtonSize();
+		btn.y = s.y - 2.0f;
+		slider->setButtonSize(btn);
     }
     invalidate();
 }
