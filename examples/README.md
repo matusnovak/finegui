@@ -8,17 +8,17 @@ The following are examples from <https://github.com/matusnovak/finegui/blob/mast
 
 [All widgets in one window - FineGraphics backend](https://github.com/matusnovak/finegui/blob/master/examples/finegraphics_backend_all.cpp)
 
-![gif](https://github.com/matusnovak/finegui/blob/master/examples/all-widgets.gif)
+![gif](./all-widgets.gif)
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/finegraphics_backend_all_1.png)
+![screenshot](./finegraphics_backend_all_1.png)
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/finegraphics_backend_all_2.png)
+![screenshot](./finegraphics_backend_all_2.png)
 
 ## Align
 
 [Different ways of aligning widgets - FineGraphics backend](https://github.com/matusnovak/finegui/blob/master/examples/finegraphics_backend_align.cpp)
 
-![gif](https://github.com/matusnovak/finegui/blob/master/examples/align.gif)
+![gif](./align.gif)
 
 # More examples by widgets
 
@@ -44,7 +44,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_button.png)
+![screenshot](./widgets_button.png)
 
 ## Button Toggle
 
@@ -70,7 +70,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_button.png)
+![screenshot](./widgets_button.png)
 
 ## Checkbox
 
@@ -95,7 +95,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_checkbox.png)
+![screenshot](./widgets_checkbox.png)
 
 ## Image Viewer
 
@@ -129,7 +129,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_image.png)
+![screenshot](./widgets_image.png)
 
 ## Label
 
@@ -149,7 +149,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_label.png)
+![screenshot](./widgets_label.png)
 
 ## Layout
 
@@ -181,7 +181,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_layout.png)
+![screenshot](./widgets_layout.png)
 
 ## List
 
@@ -213,7 +213,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_list.png)
+![screenshot](./widgets_list.png)
 
 
 ## Progress Bar
@@ -235,7 +235,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_progressbar.png)
+![screenshot](./widgets_progressbar.png)
 
 ## Progress Circle
 
@@ -255,7 +255,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_progresscircle.png)
+![screenshot](./widgets_progresscircle.png)
 
 ## Radio
 
@@ -292,7 +292,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_radio.png)
+![screenshot](./widgets_radio.png)
 
 ## Scrollable (layout)
 
@@ -341,7 +341,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_scrollablelayout.png)
+![screenshot](./widgets_scrollablelayout.png)
 
 ## Scrollbar
 
@@ -370,7 +370,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_scrollbar.png)
+![screenshot](./widgets_scrollbar.png)
 
 ## Slider
 
@@ -397,7 +397,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_slider.png)
+![screenshot](./widgets_slider.png)
 
 ## Switch
 
@@ -421,7 +421,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_switch.png)
+![screenshot](./widgets_switch.png)
 
 ## Tabs
 
@@ -449,7 +449,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_tabs.png)
+![screenshot](./widgets_tabs.png)
 
 ## Text
 
@@ -478,7 +478,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_text.png)
+![screenshot](./widgets_text.png)
 
 ## Text Input (single line)
 
@@ -499,7 +499,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_textinput_singleline.png)
+![screenshot](./widgets_textinput_singleline.png)
 
 ## Text Input (multi line)
 
@@ -520,7 +520,7 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_textinput_multiline.png)
+![screenshot](./widgets_textinput_multiline.png)
 
 ## Text Input (multi line with scroll)
 
@@ -541,4 +541,4 @@ while(true){
 }
 ```
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/examples/widgets_textinput_scroll.png)
+![screenshot](./widgets_textinput_scroll.png)

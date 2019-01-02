@@ -9,7 +9,7 @@
 
 ## Introduction 
 
-![gif](https://github.com/matusnovak/finegui/blob/master/examples/align.gif)
+![gif](./examples/align.gif)
 
 The FineGui is a standalone library that provides a simple utf8 enabled graphical user interface with a linear layout system similar to Android GUI development. The rendering and updating logic behind this library is done as a framebuffer. For example, when looping inside your render function, the gui window will not render each frame, instead it will update and render only when necessary (user clicks on a button -> change color). The library also offers experimental XML parser that generates GUI structure for you. This library is not meant to be the best GUI library in the world. Instead, it offers a simple backend API that can be integrated into any renderer you want. The purpose of this abstract backend is to enable embeding this library into IoT devices that, for example, do not use hardware acceleration. The backend would be your custom CPU based renderer that writes pixels directly into, for example, an LCD. However, there is FineGraphics and NanoVG backends included. See the example folder for more.
 
@@ -39,7 +39,7 @@ All dependencies listed here are already included as a git submodule and will be
 
 ## Code example
 
-![screenshot](https://github.com/matusnovak/finegui/blob/master/screenshot.png)
+![screenshot](./screenshot.png)
 
 Looking for more examples? Try the [examples folder](examples/README.md).
 
